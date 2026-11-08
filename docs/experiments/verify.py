@@ -4,8 +4,8 @@ import importlib.metadata as meta
 import json
 from pathlib import Path
 import numpy as np
-from qaf.interpreter import atlas
-from qaf.interpreter import hilbert
+from qaf import atlas
+from qaf import hilbert
 from qaf.interpreter import run
 from qaf.qaf_core import I, X, Y, Z, H, Wave, BUILTINS, density
 from qaf.qaf_language import prepare

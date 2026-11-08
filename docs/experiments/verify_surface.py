@@ -63,7 +63,7 @@ def main():
         obs=run(qread(name))[1]
         assert ref==obs
         executed.append(name)
-    from qaf.interpreter import hilbert
+    from qaf import hilbert
     for name in ("hilbert","wave_packet","nonlinear"):
         ref=prepare((root/"examples"/(name+".qaf")).read_text(encoding="utf8"))
         assert hilbert.evaluate(ref)==hilbert.evaluate(prepare(qread(name)))
