@@ -1,0 +1,206 @@
+{
+  "modulus": 21,
+  "base": 2,
+  "method": "shor",
+  "qubits": 15,
+  "backend": "cuda",
+  "seed": 20261108,
+  "shots": 16,
+  "verified_shots": 16,
+  "source_sha256": "3d8112d22c69da66ddb40fb201f2ef5cddd0b60d851396c0b0fb06f1564e941c",
+  "max_frequency_error": 6.106226635438361e-16,
+  "samples": [
+    {
+      "frequency": [
+        683
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        0
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        341
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        341
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        0
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        683
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        0
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        170
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        0
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        171
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        171
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        512
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        683
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        171
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        512
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "frequency": [
+        171
+      ],
+      "recovered": {
+        "order": 6,
+        "factors": [
+          3,
+          7
+        ]
+      }
+    }
+  ]
+}

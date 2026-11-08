@@ -1,0 +1,13 @@
+syntax prefix
+
+qubo 3
+offset 1
+linear 0
+    - 0 1
+linear 1
+    - 0 1
+linear 2
+    - 0 1
+pair 0 1 2
+pair 0 2 2
+pair 1 2 2

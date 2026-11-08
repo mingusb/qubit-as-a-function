@@ -1,0 +1,175 @@
+{
+  "device": "NVIDIA RTX A5000 Laptop GPU",
+  "callable": [
+    [
+      0.4999999999999999,
+      0.0,
+      0.0,
+      0.4999999999999999
+    ],
+    0.4999999999999999
+  ],
+  "teleport": [
+    {
+      "00": 0.24999999999999972,
+      "01": 0.24999999999999972,
+      "10": 0.24999999999999972,
+      "11": 0.24999999999999972
+    }
+  ],
+  "recursion": [
+    [
+      0.4999999999999999,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.4999999999999999
+    ]
+  ],
+  "grover": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.9999999999999991
+    ]
+  ],
+  "functions": [
+    0.2499999999999999
+  ],
+  "algebra": [
+    [
+      0.0,
+      0.7071067811865475
+    ],
+    [
+      0.7071067811865475,
+      0.0
+    ]
+  ],
+  "bell": [
+    {
+      "00": 0.4999999999999999,
+      "11": 0.4999999999999999
+    }
+  ],
+  "bell_state": [
+    [
+      0.4999999999999999,
+      0.0,
+      0.0,
+      0.4999999999999999
+    ]
+  ],
+  "conditional_record_overwrite": "passed",
+  "order_mod_15": [
+    0.24999999999999967,
+    0.0,
+    0.24999999999999967,
+    0.0,
+    0.24999999999999967,
+    0.0,
+    0.24999999999999967,
+    0.0
+  ],
+  "random_registers": 10,
+  "rejected_programs": 6,
+  "box_energies": [
+    4.774575140626313,
+    4.884897716341418,
+    4.920774191352386,
+    4.931076317910852,
+    4.933841633420188
+  ],
+  "tomography_and_functional_calculus": "passed",
+  "hilbert": [
+    {
+      "tail": "1/43046721"
+    },
+    {
+      "fidelity": "24/25"
+    },
+    {
+      "svm": "-64/225"
+    }
+  ],
+  "wave_packet": [
+    {
+      "tail": "38107/104447232"
+    },
+    {
+      "fidelity": "72125/322368"
+    }
+  ],
+  "nonlinear_infinite_width": {
+    "expression": "min(2,1/(1-k(3/4)))*(k(8/9)-k(24/25))",
+    "decimal": "-0.20406533877351275710"
+  },
+  "exact_toffoli": "all eight columns equal, including phase",
+  "bell_certificate": {
+    "source_sha256": "ef41c8c6de3f427fa1fa2cabaf056f24b6243320eb9600ae67a672ea73add74f",
+    "gate_readout_sha256": "eb25da6bc1c7e9d5f1b89103b86a4433f883062d7a56fec272b23027bf0b25f7",
+    "ideal_profile": "QAF Clifford+T with terminal records",
+    "primitive_count": 2,
+    "quil_sha256": "ba4e111f7d855eceee2881e11fcb00f74616d5f11ed7feeffc1991e70d30d776"
+  },
+  "braket-local": [
+    0.48,
+    0.0,
+    0.0,
+    0.52
+  ],
+  "cirq-local": [
+    0.5,
+    0.0,
+    0.0,
+    0.5
+  ],
+  "ionq_payload": {
+    "qubits": 2,
+    "circuit": [
+      {
+        "gate": "h",
+        "target": 0
+      },
+      {
+        "gate": "cnot",
+        "control": 0,
+        "target": 1
+      }
+    ]
+  },
+  "google_grid_device": "Sycamore metadata validation and local sampling",
+  "onehot": {
+    "minimum": 0.0,
+    "words": [
+      "001",
+      "010",
+      "100"
+    ]
+  },
+  "antiferromagnet": {
+    "minimum": -1.0,
+    "words": [
+      "01",
+      "10"
+    ]
+  },
+  "versions": {
+    "TatSu": "5.13.2",
+    "numpy": "2.3.5",
+    "cupy-cuda13x": "14.2.0",
+    "cirq-google": "1.7.0",
+    "amazon-braket-sdk": "1.127.7",
+    "azure-quantum": "3.13.0",
+    "dimod": "0.12.23",
+    "dwave-system": "1.37.0",
+    "matplotlib": "3.11.2",
+    "sympy": "1.14.0",
+    "latexminted": "0.6.0",
+    "Pygments": "2.21.0"
+  }
+}

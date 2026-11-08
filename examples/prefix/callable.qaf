@@ -1,0 +1,8 @@
+syntax prefix
+
+qubits 2
+fn f 0 I X
+apply H 0
+invoke f 1
+show probs
+show response f 0.5 0.5 0 0

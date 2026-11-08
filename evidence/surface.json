@@ -1,0 +1,19 @@
+{
+  "five_spellings_times_two_line_endings": 10,
+  "prefix_reference_examples": [
+    "callable",
+    "recursion",
+    "algebra",
+    "functions",
+    "grover",
+    "bell_state",
+    "bell",
+    "teleport",
+    "order15",
+    "hilbert",
+    "wave_packet",
+    "nonlinear"
+  ],
+  "checked_Lean_byte_roundtrips": 3,
+  "historical_Quil_unchanged": true
+}

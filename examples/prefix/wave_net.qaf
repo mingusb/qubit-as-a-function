@@ -1,0 +1,7 @@
+syntax prefix
+
+network wave_net
+    input 1
+    linear 16
+    tanh
+    linear 2

@@ -1,0 +1,23 @@
+syntax prefix
+
+qubits 3
+bits 2
+apply
+    Ry
+        / pi 3
+    0
+apply
+    Phase
+        / pi 5
+    0
+apply H 1
+apply CX 1 2
+apply CX 0 1
+apply H 0
+measure 0 0
+measure 1 1
+if_bit 1 1
+    apply X 2
+if_bit 0 1
+    apply Z 2
+show bits

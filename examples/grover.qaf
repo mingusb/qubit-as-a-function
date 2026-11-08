@@ -1,0 +1,10 @@
+qubits 2
+# Mark |11>, then reflect about the uniform input (up to global phase).
+state(b) = 1 / 2
+apply CZ on 0, 1
+apply tensor(H, H) on 0, 1
+apply tensor(X, X) on 0, 1
+apply CZ on 0, 1
+apply tensor(X, X) on 0, 1
+apply tensor(H, H) on 0, 1
+show probs

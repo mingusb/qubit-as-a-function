@@ -1,0 +1,23 @@
+syntax prefix
+
+qubits 2
+state b / 1 2
+apply CZ 0 1
+apply
+    tensor H H
+    0
+    1
+apply
+    tensor X X
+    0
+    1
+apply CZ 0 1
+apply
+    tensor X X
+    0
+    1
+apply
+    tensor H H
+    0
+    1
+show probs

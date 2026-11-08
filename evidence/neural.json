@@ -1,0 +1,11 @@
+{
+  "pytorch": "2.14.0+cu132",
+  "device": "NVIDIA RTX A5000 Laptop GPU",
+  "grid_points": 40,
+  "initial_energy": 5.48168219544955,
+  "variational_energy": 4.932388702100729,
+  "exact_grid_energy": 4.9323882101322845,
+  "continuum_energy": 4.934802200544679,
+  "shor_amplitudes_compared": 131072,
+  "max_amplitude_difference": 5.204170427930421e-18
+}

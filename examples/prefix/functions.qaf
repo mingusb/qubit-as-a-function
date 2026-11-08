@@ -1,0 +1,28 @@
+syntax prefix
+
+qubits 1
+gate spectral 1 y x
+    *
+        eq y x
+        cis
+            /
+                *
+                    - 0 pi
+                    - 1
+                        * 2 x
+                3
+channel forget_z 1 y x
+    *
+        eq y 0
+        eq x 0
+    *
+        eq y 1
+        eq x 1
+super in_x slot H H
+state b / 1 sqrt 2
+apply
+    in_x forget_z
+    0
+apply spectral 0
+apply H 0
+show prob 0

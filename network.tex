@@ -1,0 +1,14 @@
+\subsection{An executable nonlinear infinite-width network}
+We can realize the nonlinear connection explicitly. Start with unit inputs $x=\rho_\psi$ in the real Hilbert--Schmidt feature space above, so $c=\langle x,y\rangle=\Tr(\rho_\psi\rho_\phi)$. Consider the scalar network $m^{-1/2}\sum_{r=1}^{m}a_r\sin(g_r(x))$, with independent standard Gaussian output weights and independent centered isonormal Gaussian families $g_r$. On every finite set of inputs their covariance matrix is the input Gram matrix. This definition avoids treating white noise as a square-summable parameter vector. Finite projections give the same construction for ordinary parameter gradients, followed by the Hilbert limit on a fixed set of inputs.
+
+Training both weight layers in the tangent parameterization contributes one sine-product term and one cosine-product term. For jointly standard Gaussian $U,V$ of covariance $c$, the population tangent kernel is
+\begin{align}
+ \kappa(c)
+ &=\mathbb E[\sin U\sin V]+c\,\mathbb E[\cos U\cos V] \nonumber\\
+ &=e^{-1}\bigl(\sinh c+c\cosh c\bigr). \label{eq:sine}
+\end{align}
+The Gaussian identity $\mathbb E\cos(U\pm V)=e^{-(1\pm c)}$ proves the formula. Independent units give this deterministic kernel in the width limit by the law of large numbers on any fixed finite set of inputs. It is nonlinear in $c$ and has $\kappa(1)=1$. The limiting tangent features distinguish the classifier below from the preceding SVM using the untransformed fidelity.
+
+For two opposite labels with unit kernel diagonal, the soft-margin dual reduces by symmetry to maximizing $2\alpha-\alpha^2[1-\kappa(c_{+-})]$ over $0\le\alpha\le C$. Taking the symmetric intercept zero gives score $\alpha[\kappa(c_{x+})-\kappa(c_{x-})]$. QAF computes both a symbolic expression and its decimal evaluation. The runnable example uses the same infinite-rank test state as before.
+\inputminted{qaf}{examples/prefix/nonlinear.qaf}
+Here $\alpha=\min\{2,1/[1-\kappa(3/4)]\}$ and the score is $\alpha[\kappa(8/9)-\kappa(24/25)]$. The independent check integrates the sine and cosine products by two-dimensional Gaussian quadrature. The result implements the infinite-width kernel classifier analytically, without fitting a large finite network. Chen et al.\ supply the training-dynamics correspondence under the assumptions stated above. The Gaussian derivation supplies the actual nonlinear kernel for this choice of features and architecture. Neither calculation increases the number of independently distinguishable states of a single quantum wire.

@@ -1,0 +1,4 @@
+qubits 2
+apply H on 0
+apply CX on 0, 1
+show probs

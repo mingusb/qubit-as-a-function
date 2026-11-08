@@ -1,0 +1,122 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{syntax}\PYG{+w}{ }\PYG{k}{prefix}
+
+\PYG{k}{proc}\PYG{+w}{ }\PYG{n}{powers}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{n}{lo}\PYG{+w}{ }\PYG{n}{hi}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{mulmod}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{n}{lo}\PYG{+w}{ }\PYG{n}{hi}
+\PYG{+w}{            }\PYG{o}{\PYGZhy{}}
+\PYG{+w}{                }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{count}
+\PYG{+w}{                }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{n}{mod}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{n}{modulus}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{l+m}{1}
+
+\PYG{k}{proc}\PYG{+w}{ }\PYG{n}{uniform}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{count}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{k}{place}\PYG{+w}{ }\PYG{n+nc}{H}
+\PYG{+w}{            }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{count}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n}{power\PYGZus{}of\PYGZus{}two}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{v}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{v}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{2}\PYG{+w}{ }\PYG{n}{v}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{v}
+
+\PYG{k}{proc}\PYG{+w}{ }\PYG{n}{inverse\PYGZus{}fourier}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{count}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZlt{}}
+\PYG{+w}{            }\PYG{o}{+}
+\PYG{+w}{                }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{2}\PYG{+w}{ }\PYG{n}{j}
+\PYG{+w}{                }\PYG{l+m}{1}
+\PYG{+w}{            }\PYG{n}{count}
+\PYG{+w}{        }\PYG{k}{place}\PYG{+w}{ }\PYG{n+nc}{SWAP}
+\PYG{+w}{            }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{j}
+\PYG{+w}{            }\PYG{o}{\PYGZhy{}}
+\PYG{+w}{                }\PYG{o}{\PYGZhy{}}
+\PYG{+w}{                    }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{count}
+\PYG{+w}{                    }\PYG{l+m}{1}
+\PYG{+w}{                }\PYG{n}{j}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{n}{count}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{k}{while}
+\PYG{+w}{            }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{n}{j}
+\PYG{+w}{            }\PYG{k}{place}
+\PYG{+w}{                }\PYG{n}{ctrl}
+\PYG{+w}{                    }\PYG{n+nc}{Phase}
+\PYG{+w}{                        }\PYG{o}{/}
+\PYG{+w}{                            }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{pi}
+\PYG{+w}{                            }\PYG{n}{power\PYGZus{}of\PYGZus{}two}
+\PYG{+w}{                                }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{n}{j}
+\PYG{+w}{                }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{k}
+\PYG{+w}{                }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{j}
+\PYG{+w}{            }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{k}{place}\PYG{+w}{ }\PYG{n+nc}{H}
+\PYG{+w}{            }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{n}{j}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n}{pow\PYGZus{}mod}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{odd}\PYG{+w}{ }\PYG{n}{mod}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{odd}
+\PYG{+w}{            }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{mod}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{mod}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{n}{odd}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{y}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n}{inverse}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{s}\PYG{+w}{ }\PYG{n}{a}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{v}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{s}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{rem}\PYG{+w}{ }\PYG{n}{mod}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{n}{s}
+\PYG{+w}{        }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{q}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{n}{rem}\PYG{+w}{ }\PYG{n}{s}
+\PYG{+w}{        }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}\PYG{+w}{ }\PYG{n}{v}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{n}{s}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{s}\PYG{+w}{ }\PYG{n}{rem}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{n}{v}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{v}\PYG{+w}{ }\PYG{n}{w}
+\PYG{+w}{    }\PYG{k}{if}
+\PYG{+w}{        }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{u}
+
+\PYG{k}{proc}\PYG{+w}{ }\PYG{n}{order\PYGZus{}finding}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{work\PYGZus{}bits}\PYG{+w}{ }\PYG{n}{precision}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{end}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{precision}\PYG{+w}{ }\PYG{n}{work\PYGZus{}bits}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{uniform}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{precision}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{powers}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{precision}\PYG{+w}{ }\PYG{n}{precision}\PYG{+w}{ }\PYG{n}{end}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{inverse\PYGZus{}fourier}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{precision}
+
+\PYG{k}{proc}\PYG{+w}{ }\PYG{n}{short\PYGZus{}log}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{n}{work\PYGZus{}bits}\PYG{+w}{ }\PYG{n}{log\PYGZus{}bits}\PYG{+w}{ }\PYG{n}{second\PYGZus{}bits}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{first}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{log\PYGZus{}bits}\PYG{+w}{ }\PYG{n}{second\PYGZus{}bits}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{work}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{first}\PYG{+w}{ }\PYG{n}{second\PYGZus{}bits}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{predecessor}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{half}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{predecessor}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{k}{offset}\PYG{+w}{ }\PYG{n}{power\PYGZus{}of\PYGZus{}two}\PYG{+w}{ }\PYG{n}{log\PYGZus{}bits}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{exponent}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{half}\PYG{+w}{ }\PYG{k}{offset}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{pow\PYGZus{}mod}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{n}{exponent}\PYG{+w}{ }\PYG{n}{modulus}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{inverse\PYGZus{}x}\PYG{+w}{ }\PYG{n}{inverse}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{modulus}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{width}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{work}\PYG{+w}{ }\PYG{n}{work\PYGZus{}bits}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{last}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{width}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{uniform}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{work}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{powers}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{n}{base}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{first}\PYG{+w}{ }\PYG{n}{work}\PYG{+w}{ }\PYG{n}{last}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{powers}\PYG{+w}{ }\PYG{n}{modulus}\PYG{+w}{ }\PYG{n}{inverse\PYGZus{}x}\PYG{+w}{ }\PYG{n}{first}\PYG{+w}{ }\PYG{n}{second\PYGZus{}bits}\PYG{+w}{ }\PYG{n}{work}\PYG{+w}{ }\PYG{n}{last}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{inverse\PYGZus{}fourier}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{first}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{inverse\PYGZus{}fourier}\PYG{+w}{ }\PYG{n}{first}\PYG{+w}{ }\PYG{n}{second\PYGZus{}bits}
+
+\PYG{k}{qubits}\PYG{+w}{ }\PYG{l+m}{17}
+\PYG{k}{apply}\PYG{+w}{ }\PYG{n+nc}{X}\PYG{+w}{ }\PYG{l+m}{16}
+\PYG{k}{do}\PYG{+w}{ }\PYG{n}{short\PYGZus{}log}\PYG{+w}{ }\PYG{l+m}{143}\PYG{+w}{ }\PYG{l+m}{2}\PYG{+w}{ }\PYG{l+m}{8}\PYG{+w}{ }\PYG{l+m}{3}\PYG{+w}{ }\PYG{l+m}{3}
+\PYG{k}{show}\PYG{+w}{ }\PYG{k}{probs}
+\end{MintedVerbatim}

@@ -1,0 +1,31 @@
+class BitMap(z, o)
+    def at(b)
+        return self.z * eq(b, 0) + self.o * eq(b, 1)
+
+class Amp(a, b)
+    def at(x)
+        return self.a * eq(x, 0) + self.b * eq(x, 1)
+    def plus(g: Amp) -> Amp
+        return Amp(self.a + g.a, self.b + g.b)
+    def minus(g: Amp) -> Amp
+        return Amp(self.a - g.a, self.b - g.b)
+    def times(g: Amp) -> Amp
+        return Amp(self.a * g.a, self.b * g.b)
+    def quotient(g: Amp) -> Amp
+        return Amp(self.a / g.a, self.b / g.b)
+    def pre(g: BitMap) -> Amp
+        return Amp(self.at(g.at(0)), self.at(g.at(1)))
+    def unit() -> Amp
+        let n = sqrt(conj(self.a) * self.a + conj(self.b) * self.b)
+        return Amp(self.a / n, self.b / n)
+
+def prepared(x)
+    let f = Amp(1, i)
+    let g = Amp(2, 1)
+    let h = f.plus(g).minus(g).times(g).quotient(g)
+    return h.pre(BitMap(1, 0)).unit().at(x)
+
+qubits 1
+state(b) = prepared(b)
+show amp "0"
+show amp "1"

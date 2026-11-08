@@ -1,0 +1,16 @@
+qubits 3
+bits 2
+# Prepare an input with a nontrivial relative phase on wire 0.
+apply Ry[pi / 3] on 0
+apply Phase[pi / 5] on 0
+apply H on 1
+apply CX on 1, 2
+apply CX on 0, 1
+apply H on 0
+measure 0 -> c[0]
+measure 1 -> c[1]
+if c[1] == 1
+    apply X on 2
+if c[0] == 1
+    apply Z on 2
+show bits

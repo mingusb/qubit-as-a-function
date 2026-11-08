@@ -1,0 +1,21 @@
+{
+  "source_sha256": "7d225f8e474a1c9963a1d75b40308fc301fdbc7de5c260936a887375637f9d31",
+  "lean_roundtrip": "byte-identical",
+  "cuda_replay_max_difference": 0.0,
+  "cuda_state_shape": [
+    131072
+  ],
+  "device": "NVIDIA RTX A5000 Laptop GPU",
+  "files": {
+    "Program.lean": "4f7a9e8f3952b02ce78a1b4bd1532c2d6529a83d78e7e3e73a1c6cf12948a173",
+    "expressions/qaf_expr_0a7e9d5a74b3779b_6a70e462.cu": "ebf17a1b8fd162bf717d72c13eb591cbe1292b809c56ce628d1d010e0ff0b1f0",
+    "expressions/qaf_expr_6c431853d1b28684_6a70e462.cu": "f6a01730cd5055593f05500cffda9f6400eba4e003ab8bd90ad058b9d1f84dfd",
+    "expressions/qaf_expr_82151e856231d10d_6a70e462.cu": "64edfea9042be45cdfd75436e361978ec7acdb4d6fa850faec7a678f5bd30b75",
+    "expressions/qaf_expr_d1eab0658ee787c9_6a70e462.cu": "97064730c2f0c89e70449beed7dde00cb27f6921cabd3b83c1522a3f332fc013",
+    "expressions/qaf_expr_ebdd2f30bafde03a_6a70e462.cu": "d46a346c0beac9399f3cff914011b3f9134a6f830367a791298042b7b877f7c2",
+    "kernels.cu": "eab89fcef44bbd5212bbdcb564c743150c13749e40a30d5916476dd570e9c8ad",
+    "plan.json": "a07c2e2487baa2f4dc5bcf4a69f1fdd6616ec77c413cddfcef96129450904e14",
+    "program.qaf": "7d225f8e474a1c9963a1d75b40308fc301fdbc7de5c260936a887375637f9d31",
+    "tables.npz": "4100272e55ad89bf8c091498c6c19c82c343cb74451245b5b4e5a00cdaa35b12"
+  }
+}

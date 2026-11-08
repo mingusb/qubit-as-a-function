@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{@@grammar}\PYG{+w}{ }\PYG{o}{::}\PYG{+w}{ }\PYG{n}{QAFPrefix}
+\PYG{k+kd}{@@comments}\PYG{+w}{ }\PYG{o}{::}\PYG{+w}{ }\PYG{l+s+sr}{/\PYGZsh{}[\PYGZca{}\PYGZbs{}n]*/}
+\PYG{n+nf}{prefix\PYGZus{}program}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{forms}\PYG{o}{:}\PYG{p}{\PYGZob{}}\PYG{n}{form}\PYG{p}{\PYGZcb{}}\PYG{o}{+}\PYG{+w}{ }\PYG{o}{\PYGZdl{}}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n+nf}{form}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{group}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{atom}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n+nf}{group}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}(\PYGZsq{}}\PYG{+w}{ }\PYG{n}{parts}\PYG{o}{:}\PYG{p}{\PYGZob{}}\PYG{n}{form}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{})\PYGZsq{}}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n+nf}{atom}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+sr}{/\PYGZdq{}[\PYGZca{}\PYGZdq{}\PYGZbs{}n]*\PYGZdq{}|[\PYGZca{}\PYGZbs{}s()\PYGZsh{}]+/}\PYG{+w}{ }\PYG{p}{;}
+\end{MintedVerbatim}

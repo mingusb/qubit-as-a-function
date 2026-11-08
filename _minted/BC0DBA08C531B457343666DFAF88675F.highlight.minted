@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{syntax}\PYG{+w}{ }\PYG{k}{prefix}
+
+\PYG{k}{qubits}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{k}{fn}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n+nc}{I}\PYG{+w}{ }\PYG{n+nc}{X}
+\PYG{k}{apply}\PYG{+w}{ }\PYG{n+nc}{H}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{k}{invoke}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{k}{show}\PYG{+w}{ }\PYG{k}{probs}
+\PYG{k}{show}\PYG{+w}{ }\PYG{k}{response}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{l+m}{0.5}\PYG{+w}{ }\PYG{l+m}{0.5}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{l+m}{0}
+\end{MintedVerbatim}

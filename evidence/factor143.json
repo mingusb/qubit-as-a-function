@@ -1,0 +1,222 @@
+{
+  "modulus": 143,
+  "base": 2,
+  "method": "shortlog",
+  "qubits": 17,
+  "backend": "cuda",
+  "seed": 20261108,
+  "shots": 16,
+  "verified_shots": 16,
+  "source_sha256": "7d225f8e474a1c9963a1d75b40308fc301fdbc7de5c260936a887375637f9d31",
+  "max_frequency_error": 4.85722573273506e-17,
+  "samples": [
+    {
+      "frequency": [
+        51,
+        5
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        9,
+        5
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        27,
+        0
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        25,
+        7
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        8,
+        5
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        52,
+        2
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        8,
+        5
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        12,
+        4
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        6,
+        5
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        13,
+        3
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        17,
+        0
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        39,
+        1
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        48,
+        6
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        18,
+        1
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        34,
+        2
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "frequency": [
+        15,
+        2
+      ],
+      "recovered": {
+        "short_log": 3,
+        "factors": [
+          11,
+          13
+        ]
+      }
+    }
+  ]
+}

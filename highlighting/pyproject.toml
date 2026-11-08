@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "qaf-highlighting"
+version = "0.1.0"
+dependencies = ["Pygments>=2.18"]
+[project.entry-points."pygments.lexers"]
+qaf = "qaf_lexer:QAFLexer"
+qafgrammar = "qaf_lexer:GrammarLexer"
+[tool.setuptools]
+py-modules = ["qaf_lexer"]

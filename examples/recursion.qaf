@@ -1,0 +1,23 @@
+class ParityPhase(scale)
+    def sign(n)
+        if (n == 0)
+            return self.scale
+        return -self.sign(n - 1)
+
+def triangular(n)
+    let total = 0
+    while (n > 0)
+        set total = total + n
+        set n = n - 1
+    return total
+
+proc fan(n)
+    if (n > 1)
+        do fan(n - 1)
+        place CX on (n - 2, n - 1)
+
+qubits 3
+state(b) = eq(b, 0) * ParityPhase(1).sign(triangular(3))
+apply H on 0
+do fan(3)
+show probs

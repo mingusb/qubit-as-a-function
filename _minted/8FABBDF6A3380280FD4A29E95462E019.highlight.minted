@@ -1,0 +1,30 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{syntax}\PYG{+w}{ }\PYG{k}{prefix}
+
+\PYG{k}{qubits}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{k}{gate}\PYG{+w}{ }\PYG{n}{spectral}\PYG{+w}{ }\PYG{l+m}{1}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{x}
+\PYG{+w}{    }\PYG{o}{*}
+\PYG{+w}{        }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{x}
+\PYG{+w}{        }\PYG{n}{cis}
+\PYG{+w}{            }\PYG{o}{/}
+\PYG{+w}{                }\PYG{o}{*}
+\PYG{+w}{                    }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{n}{pi}
+\PYG{+w}{                    }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{                        }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{2}\PYG{+w}{ }\PYG{n}{x}
+\PYG{+w}{                }\PYG{l+m}{3}
+\PYG{k}{channel}\PYG{+w}{ }\PYG{n}{forget\PYGZus{}z}\PYG{+w}{ }\PYG{l+m}{1}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{x}
+\PYG{+w}{    }\PYG{o}{*}
+\PYG{+w}{        }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{    }\PYG{o}{*}
+\PYG{+w}{        }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{k}{super}\PYG{+w}{ }\PYG{n}{in\PYGZus{}x}\PYG{+w}{ }\PYG{n}{slot}\PYG{+w}{ }\PYG{n+nc}{H}\PYG{+w}{ }\PYG{n+nc}{H}
+\PYG{k}{state}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m}{1}\PYG{+w}{ }\PYG{n}{sqrt}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{k}{apply}
+\PYG{+w}{    }\PYG{n}{in\PYGZus{}x}\PYG{+w}{ }\PYG{n}{forget\PYGZus{}z}
+\PYG{+w}{    }\PYG{l+m}{0}
+\PYG{k}{apply}\PYG{+w}{ }\PYG{n}{spectral}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{k}{apply}\PYG{+w}{ }\PYG{n+nc}{H}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{k}{show}\PYG{+w}{ }\PYG{k}{prob}\PYG{+w}{ }\PYG{l+m}{0}
+\end{MintedVerbatim}

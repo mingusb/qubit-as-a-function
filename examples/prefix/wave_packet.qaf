@@ -1,0 +1,12 @@
+syntax prefix
+
+hilbert
+    term 1
+        product 1/3 -1/4
+    term 0 1/2
+        basis 1 2
+    term -1/5
+        diagonal 1/2
+show tail 4
+show fidelity
+    basis 1 2

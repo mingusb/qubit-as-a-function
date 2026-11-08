@@ -1,0 +1,6 @@
+# A normalized state on two countably infinite number modes.
+hilbert
+    1 * diagonal(1/3)
+show tail 8
+show fidelity diagonal(1/2)
+show svm basis(0, 0), diagonal(1/2)

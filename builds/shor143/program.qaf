@@ -1,0 +1,120 @@
+syntax prefix
+
+proc powers modulus base start count lo hi
+    while
+        > count 0
+        mulmod base modulus lo hi
+            -
+                + start count
+                1
+        set base mod * base base modulus
+        set count - count 1
+
+proc uniform start count
+    while
+        > count 0
+        set count - count 1
+        place H
+            + start count
+
+def power_of_two n
+    let v 1
+    while
+        > n 0
+        set v * 2 v
+        set n - n 1
+    return v
+
+proc inverse_fourier start count
+    let j 0
+    while
+        <
+            +
+                * 2 j
+                1
+            count
+        place SWAP
+            + start j
+            -
+                -
+                    + start count
+                    1
+                j
+        set j + j 1
+    set j count
+    while
+        > j 0
+        set j - j 1
+        let k - count 1
+        while
+            > k j
+            place
+                ctrl
+                    Phase
+                        /
+                            - 0 pi
+                            power_of_two
+                                - k j
+                + start k
+                + start j
+            set k - k 1
+        place H
+            + start j
+
+def pow_mod a e n
+    let y 1
+    while
+        > e 0
+        let odd mod e 2
+        if odd
+            set y mod * y a n
+        set a mod * a a n
+        set e / - e odd 2
+    return y
+
+def inverse a n
+    let r n
+    let s a
+    let u 0
+    let v 1
+    while
+        > s 0
+        let rem mod r s
+        let q / - r rem s
+        let w - u * q v
+        set r s
+        set s rem
+        set u v
+        set v w
+    if
+        < u 0
+        return + u n
+    return u
+
+proc order_finding modulus g work_bits precision
+    let end - + precision work_bits 1
+    do uniform 0 precision
+    do powers modulus g 0 precision precision end
+    do inverse_fourier 0 precision
+
+proc short_log modulus base work_bits log_bits second_bits
+    let first + log_bits second_bits
+    let work + first second_bits
+    let predecessor - modulus 1
+    let half / predecessor 2
+    let offset power_of_two log_bits
+    let exponent - half offset
+    let x pow_mod base exponent modulus
+    let inverse_x inverse x modulus
+    let width + work work_bits
+    let last - width 1
+    do uniform 0 work
+    do powers modulus base 0 first work last
+    do powers modulus inverse_x first second_bits work last
+    do inverse_fourier 0 first
+    do inverse_fourier first second_bits
+
+qubits 17
+apply X 16
+do short_log 143 2 8 3 3
+show probs

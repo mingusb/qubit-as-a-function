@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{pathlib}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{Path}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{qaf}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{run}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{qaf\PYGZus{}core}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{X}\PYG{p}{,} \PYG{n}{density}
+
+\PYG{n}{source} \PYG{o}{=} \PYG{n}{Path}\PYG{p}{(}\PYG{n+nv+vm}{\PYGZus{}\PYGZus{}file\PYGZus{}\PYGZus{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{with\PYGZus{}name}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}callable.qaf\PYGZdq{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{read\PYGZus{}text}\PYG{p}{()}
+\PYG{n}{branches}\PYG{p}{,} \PYG{p}{(}\PYG{n}{probabilities}\PYG{p}{,} \PYG{n}{x\PYGZus{}response}\PYG{p}{)} \PYG{o}{=} \PYG{n}{run}\PYG{p}{(}\PYG{n}{source}\PYG{p}{)}
+\PYG{n}{rho} \PYG{o}{=} \PYG{n}{density}\PYG{p}{(}\PYG{n}{branches}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{local} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{trace}\PYG{p}{(}\PYG{n}{rho}\PYG{p}{,} \PYG{n}{axis1}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{axis2}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{testing}\PYG{o}{.}\PYG{n}{assert\PYGZus{}allclose}\PYG{p}{(}\PYG{n}{probabilities}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{p}{])}
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{testing}\PYG{o}{.}\PYG{n}{assert\PYGZus{}allclose}\PYG{p}{(}\PYG{n}{local}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{eye}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{testing}\PYG{o}{.}\PYG{n}{assert\PYGZus{}allclose}\PYG{p}{(}\PYG{n}{x\PYGZus{}response}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{joint} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{trace}\PYG{p}{(}\PYG{n}{rho}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{)} \PYG{o}{@} \PYG{n}{np}\PYG{o}{.}\PYG{n}{kron}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{X}\PYG{p}{))}
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{testing}\PYG{o}{.}\PYG{n}{assert\PYGZus{}allclose}\PYG{p}{(}\PYG{n}{joint}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Bell populations, local state and joint coherence agree.\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,6 @@
+@@grammar :: QAFPrefix
+@@comments :: /#[^\n]*/
+prefix_program = forms:{form}+ $ ;
+form = group | atom ;
+group = '(' parts:{form} ')' ;
+atom = /"[^"\n]*"|[^\s()#]+/ ;

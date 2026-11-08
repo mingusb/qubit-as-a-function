@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.olean
+.venv/
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

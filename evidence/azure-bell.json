@@ -1,0 +1,16 @@
+{
+  "target": "rigetti.sim.qvm",
+  "status": "Succeeded",
+  "shots": 100,
+  "counts": {
+    "00": 49,
+    "11": 51
+  },
+  "certificate": {
+    "source_sha256": "c077c886c60b2f21bd3d58478a55469b43539d12c3a307521744ed90d3ec71ed",
+    "gate_readout_sha256": "eb25da6bc1c7e9d5f1b89103b86a4433f883062d7a56fec272b23027bf0b25f7",
+    "ideal_profile": "QAF Clifford+T with terminal records",
+    "primitive_count": 2,
+    "quil_sha256": "ba4e111f7d855eceee2881e11fcb00f74616d5f11ed7feeffc1991e70d30d776"
+  }
+}

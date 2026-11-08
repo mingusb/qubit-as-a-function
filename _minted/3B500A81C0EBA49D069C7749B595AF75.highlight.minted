@@ -1,0 +1,42 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{syntax}\PYG{+w}{ }\PYG{k}{prefix}
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{ParityPhase}\PYG{+w}{ }\PYG{n}{scale}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{n}{sign}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{        }\PYG{k}{if}
+\PYG{+w}{            }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{            }\PYG{k}{return}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{scale}
+\PYG{+w}{        }\PYG{k}{return}
+\PYG{+w}{            }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{                }\PYG{k}{method}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{sign}
+\PYG{+w}{                    }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{1}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n}{triangular}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{total}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{    }\PYG{k}{while}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{total}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{total}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{total}
+
+\PYG{k}{proc}\PYG{+w}{ }\PYG{n}{fan}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{k}{if}
+\PYG{+w}{        }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{k}{do}\PYG{+w}{ }\PYG{n}{fan}
+\PYG{+w}{            }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{        }\PYG{k}{place}\PYG{+w}{ }\PYG{n+nc}{CX}
+\PYG{+w}{            }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{+w}{            }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{l+m}{1}
+
+\PYG{k}{qubits}\PYG{+w}{ }\PYG{l+m}{3}
+\PYG{k}{state}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{    }\PYG{o}{*}
+\PYG{+w}{        }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{        }\PYG{k}{method}
+\PYG{+w}{            }\PYG{n+nc}{ParityPhase}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{            }\PYG{n}{sign}
+\PYG{+w}{            }\PYG{n}{triangular}\PYG{+w}{ }\PYG{l+m}{3}
+\PYG{k}{apply}\PYG{+w}{ }\PYG{n+nc}{H}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{k}{do}\PYG{+w}{ }\PYG{n}{fan}\PYG{+w}{ }\PYG{l+m}{3}
+\PYG{k}{show}\PYG{+w}{ }\PYG{k}{probs}
+\end{MintedVerbatim}

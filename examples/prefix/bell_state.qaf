@@ -1,0 +1,6 @@
+syntax prefix
+
+qubits 2
+apply H 0
+apply CX 0 1
+show probs

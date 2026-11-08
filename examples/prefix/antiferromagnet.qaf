@@ -1,0 +1,4 @@
+syntax prefix
+
+ising 2
+pair 0 1 1

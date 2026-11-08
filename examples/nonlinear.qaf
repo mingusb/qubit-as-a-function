@@ -1,0 +1,4 @@
+hilbert
+    1 * diagonal(1/3)
+# Two labeled quantum training states, nonlinear sine-network tangent kernel.
+show network basis(0, 0), diagonal(1/2) penalty 2

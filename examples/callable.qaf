@@ -1,0 +1,6 @@
+qubits 2
+fn f at 0 = I | X
+apply H on 0
+invoke f on 1
+show probs
+show response f [0.5, 0.5, 0, 0]

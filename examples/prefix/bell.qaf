@@ -1,0 +1,9 @@
+syntax prefix
+
+qubits 2
+bits 2
+apply H 0
+apply CX 0 1
+measure 0 0
+measure 1 1
+show bits

@@ -1,0 +1,10 @@
+qubits 1
+gate spectral[1](y, x) = eq(y, x) * cis(-pi * (1 - 2 * x) / 3)
+channel forget_z[1](y, x) = kraus
+    eq(y, 0) * eq(x, 0), eq(y, 1) * eq(x, 1)
+super in_x(slot) = H >> slot >> H
+state(b) = 1 / sqrt(2)
+apply in_x(forget_z) on 0
+apply spectral on 0
+apply H on 0
+show prob "0"

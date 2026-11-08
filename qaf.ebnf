@@ -1,0 +1,71 @@
+@@grammar :: QubitAsAFunction
+@@comments :: /#[^\n]*/
+program = library:{declaration} body:(circuit | optimization | hilbert | network) $ ;
+network = model:'network' name:ident '{' layers:{layer}+ '}' $ ;
+layer = kind:('input' | 'linear') width:uint [ ';' ]
+      | kind:('tanh' | 'relu' | 'sigmoid' | 'sine') [ ';' ] ;
+hilbert = model:'hilbert' '{' terms:{component}+ '}' queries:{seriesquery}+ $ ;
+component = real:rational [ 'imag' imag:rational ] '*' atom:seriesatom [ ';' ] ;
+seriesatom = kind:'basis' '(' a:uint ',' b:uint ')'
+           | kind:'diagonal' '(' a:rational ')'
+           | kind:'product' '(' a:rational ',' b:rational ')' ;
+rational = /-?(?:0|[1-9][0-9]*)(?:\/[1-9][0-9]*)?/ ;
+seriesquery = 'show' (kind:'tail' rank:uint | kind:'fidelity' first:seriesatom
+            | kind:'svm' first:seriesatom ',' second:seriesatom
+            | kind:'network' first:seriesatom ',' second:seriesatom 'penalty' cost:rational) [ ';' ] ;
+declaration = classdef | routine | procedure ;
+classdef = kind:'class' name:ident '(' fields:','.{parameter}* ')' '{' methods:{routine} '}' ;
+routine = kind:'def' name:ident '(' params:','.{parameter}* ')' [ '->' result:ident ] body:block ;
+procedure = kind:'proc' name:ident '(' params:','.{parameter}* ')' body:block ;
+parameter = name:ident [ ':' type:ident ] ;
+block = '{' @:{action} '}' ;
+action = (kind:'let' | kind:'set') name:ident '=' value:expr [ ';' ]
+       | kind:'return' value:expr [ ';' ]
+       | kind:'if' '(' condition:expr ')' yes:block [ 'else' no:block ]
+       | kind:'while' '(' condition:expr ')' body:block
+       | kind:'place' operation:op 'on' '(' args:','.{expr}+ ')' [ ';' ]
+       | kind:'do' name:ident '(' args:','.{expr}* ')' [ ';' ] | modular ;
+modular = kind:'mulmod' factor:expr 'modulo' modulus:expr 'on' '(' lo:expr ',' hi:expr ')'
+          [ 'by' control:expr ] [ ';' ] ;
+circuit = 'qubits' width:uint [ ';' ] [ 'bits' bits:uint [ ';' ] ]
+          definitions:{definition} [initial:state] steps:{step} queries:{query} $ ;
+optimization = model:('qubo' | 'ising') width:uint [ ';' ] terms:{term} $ ;
+term = (kind:'linear' a:uint | kind:'pair' a:uint ',' b:uint | kind:'offset')
+       '=' value:expr [ ';' ] ;
+definition = gate | channel | supermap | functionqubit ;
+functionqubit = kind:'fn' name:ident 'at' wire:uint '=' first:op '|' second:op [ ';' ] ;
+gate = kind:'gate' name:ident '[' width:uint ']' '(' row:ident ',' col:ident ')'
+       '=' element:expr [ ';' ] ;
+channel = kind:'channel' name:ident '[' width:uint ']' '(' row:ident ',' col:ident ')'
+          '=' 'kraus' '{' elements:','.{expr}+ '}' [ ';' ] ;
+supermap = kind:'super' name:ident '(' slot:ident ')' '=' before:op '>>'
+           middle:ident '>>' after:op [ ';' ] ;
+state = 'state' '(' index:ident ')' '=' amplitude:expr [ ';' ] ;
+step = application | measurement | conditional | repetition | invocation | expand | modular ;
+invocation = kind:'invoke' ref:(uint | ident) 'on' wires:','.{uint}+ [ ';' ] ;
+expand = kind:'do' name:ident '(' args:','.{expr}* ')' [ ';' ] ;
+application = kind:'apply' operation:op 'on' wires:','.{uint}+ [ ';' ] ;
+measurement = kind:'measure' wire:uint '->' 'c' '[' bit:uint ']' [ ';' ] ;
+conditional = kind:'if' 'c' '[' bit:uint ']' '==' value:uint '{' body:{step} '}' ;
+repetition = kind:'repeat' count:uint '{' body:{step} '}' ;
+query = 'show' (kind:'response' ref:(uint | ident) '[' coeffs:','.{expr}+ ']'
+        | kind:'amp' word:word | kind:'prob' word:word |
+        kind:'probs' | kind:'bits' | kind:'density') [ ';' ] ;
+op = name:ident [ '[' angles:','.{expr}+ ']' | '(' operands:','.{op}+ ')' ] ;
+expr = first:sum [ relation:('==' | '!=' | '<=' | '>=' | '<' | '>') second:sum ] ;
+sum = first:product rest:{addition} ;
+addition = sign:('+' | '-') term:product ;
+product = first:unary rest:{multiplication} ;
+multiplication = sign:('*' | '/') term:unary ;
+unary = negative | positive | atom ;
+negative = '-' child:unary ;
+positive = '+' @:unary ;
+atom = base:primary suffix:{member} ;
+primary = call | literal | variable | '(' @:expr ')' ;
+member = '.' name:ident [ open:'(' args:','.{expr}* ')' ] ;
+call = fn:ident '(' args:','.{expr}* ')' ;
+literal = /(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?/ ;
+variable = ident ;
+ident = /[A-Za-z_][A-Za-z_0-9]*/ ;
+uint = /0|[1-9][0-9]*/ ;
+word = /"[01]+"/ ;

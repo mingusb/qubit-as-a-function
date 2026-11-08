@@ -1,0 +1,76 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{syntax}\PYG{+w}{ }\PYG{k}{prefix}
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{BitMap}\PYG{+w}{ }\PYG{n}{z}\PYG{+w}{ }\PYG{n}{o}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{k}{at}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{z}\PYG{+w}{ }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{o}\PYG{+w}{ }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{l+m}{1}
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{k}{at}\PYG{+w}{ }\PYG{n}{x}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{l+m}{0}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{n}{eq}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{n}{plus}
+\PYG{+w}{        }\PYG{k}{args}
+\PYG{+w}{            }\PYG{k}{type}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{returns}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{n}{minus}
+\PYG{+w}{        }\PYG{k}{args}
+\PYG{+w}{            }\PYG{k}{type}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{returns}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{n}{times}
+\PYG{+w}{        }\PYG{k}{args}
+\PYG{+w}{            }\PYG{k}{type}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{returns}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{n}{quotient}
+\PYG{+w}{        }\PYG{k}{args}
+\PYG{+w}{            }\PYG{k}{type}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{returns}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{n}{pre}
+\PYG{+w}{        }\PYG{k}{args}
+\PYG{+w}{            }\PYG{k}{type}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n+nc}{BitMap}
+\PYG{+w}{        }\PYG{k}{returns}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{return}
+\PYG{+w}{            }\PYG{n+nc}{Amp}
+\PYG{+w}{                }\PYG{k}{method}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{k}{at}
+\PYG{+w}{                    }\PYG{k}{method}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{k}{at}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{                }\PYG{k}{method}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{k}{at}
+\PYG{+w}{                    }\PYG{k}{method}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{k}{at}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{def}\PYG{+w}{ }\PYG{n}{unit}
+\PYG{+w}{        }\PYG{k}{returns}\PYG{+w}{ }\PYG{n+nc}{Amp}
+\PYG{+w}{        }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{            }\PYG{n}{sqrt}
+\PYG{+w}{                }\PYG{o}{+}
+\PYG{+w}{                    }\PYG{o}{*}
+\PYG{+w}{                        }\PYG{n}{conj}
+\PYG{+w}{                            }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}
+\PYG{+w}{                        }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}
+\PYG{+w}{                    }\PYG{o}{*}
+\PYG{+w}{                        }\PYG{n}{conj}
+\PYG{+w}{                            }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{                        }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{k}{field}\PYG{+w}{ }\PYG{n}{self}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{n}{n}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n}{prepared}\PYG{+w}{ }\PYG{n}{x}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{l+m}{1}\PYG{+w}{ }\PYG{n}{i}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n+nc}{Amp}\PYG{+w}{ }\PYG{l+m}{2}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{+w}{    }\PYG{k}{let}\PYG{+w}{ }\PYG{n}{h}
+\PYG{+w}{        }\PYG{k}{pipe}\PYG{+w}{ }\PYG{n}{f}
+\PYG{+w}{            }\PYG{n}{plus}\PYG{+w}{ }\PYG{n}{g}
+\PYG{+w}{            }\PYG{n}{minus}\PYG{+w}{ }\PYG{n}{g}
+\PYG{+w}{            }\PYG{n}{times}\PYG{+w}{ }\PYG{n}{g}
+\PYG{+w}{            }\PYG{n}{quotient}\PYG{+w}{ }\PYG{n}{g}
+\PYG{+w}{    }\PYG{k}{return}
+\PYG{+w}{        }\PYG{k}{pipe}\PYG{+w}{ }\PYG{n}{h}
+\PYG{+w}{            }\PYG{n}{pre}
+\PYG{+w}{                }\PYG{n+nc}{BitMap}\PYG{+w}{ }\PYG{l+m}{1}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{+w}{            }\PYG{n}{unit}
+\PYG{+w}{            }\PYG{k}{at}\PYG{+w}{ }\PYG{n}{x}
+
+\PYG{k}{qubits}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{k}{state}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{n}{prepared}\PYG{+w}{ }\PYG{n}{b}
+\PYG{k}{show}\PYG{+w}{ }\PYG{k}{amp}\PYG{+w}{ }\PYG{l+m}{0}
+\PYG{k}{show}\PYG{+w}{ }\PYG{k}{amp}\PYG{+w}{ }\PYG{l+m}{1}
+\end{MintedVerbatim}

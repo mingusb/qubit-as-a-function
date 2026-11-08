@@ -1,0 +1,74 @@
+syntax prefix
+
+class BitMap z o
+    def at b
+        return + * field self z eq b 0 * field self o eq b 1
+
+class Amp a b
+    def at x
+        return + * field self a eq x 0 * field self b eq x 1
+    def plus
+        args
+            type g Amp
+        returns Amp
+        return Amp + field self a field g a + field self b field g b
+    def minus
+        args
+            type g Amp
+        returns Amp
+        return Amp - field self a field g a - field self b field g b
+    def times
+        args
+            type g Amp
+        returns Amp
+        return Amp * field self a field g a * field self b field g b
+    def quotient
+        args
+            type g Amp
+        returns Amp
+        return Amp / field self a field g a / field self b field g b
+    def pre
+        args
+            type g BitMap
+        returns Amp
+        return
+            Amp
+                method self at
+                    method g at 0
+                method self at
+                    method g at 1
+    def unit
+        returns Amp
+        let n
+            sqrt
+                +
+                    *
+                        conj
+                            field self a
+                        field self a
+                    *
+                        conj
+                            field self b
+                        field self b
+        return Amp / field self a n / field self b n
+
+def prepared x
+    let f Amp 1 i
+    let g Amp 2 1
+    let h
+        pipe f
+            plus g
+            minus g
+            times g
+            quotient g
+    return
+        pipe h
+            pre
+                BitMap 1 0
+            unit
+            at x
+
+qubits 1
+state b prepared b
+show amp 0
+show amp 1
