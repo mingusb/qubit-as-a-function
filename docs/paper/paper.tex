@@ -27,7 +27,7 @@ What can it mean to call a qubit a function? In a fixed basis the amplitudes of 
 \end{abstract}
 \section{The question at one wire}
 Prepare a control in $\ket{+}=(\ket0+\ket1)/\sqrt2$ and a target in $\ket0$. Ask the control to select the identity or a bit flip on the target. In QAF the selector is a qubit that can subsequently be probed by another expression.
-\inputminted{qaf}{../../examples/prefix/callable.qaf}
+\inputminted{qaf}{examples/prefix/callable.qaf}
 The joint computational probabilities are $(1/2,0,0,1/2)$. The last line asks for the probability of the $+1$ outcome of an $X$ measurement on the selector. It returns $1/2$. Immediately before invocation, the same probe would return $1$. Coherent invocation has made a Bell pair. A language that continued to store the selector as an independent pure state would predict the wrong answer. The four real coefficients in the probe specify an effect $aI+xX+yY+zZ$ in that order.
 
 Three supplied literature reviews pose this question at different scales. \emph{Quantum Functionhood from Wavefunctions to Functions of Quantum Functions} (4 pp.) supplies the probe-and-response formulation. \emph{Quantum Functionhood from $\psi(x)$ to Functions of Quantum Functions} (16 pp.) distinguishes basis functions, geometric representations, compositional descriptions and higher-order processes. \emph{Quantum Functionhood, 1925--2026} (5 pp.) adds operator functional calculus, qubitization and singular-value transformations. These are overlapping secondary sources. We identify the primary results behind their claims, including versions available by 8 November 2026. Our contributions are the design of the callable wire, its implementation across local execution models, a lossless Lean embedding and an executable comparison of the different senses of function. Table~\ref{tab:levels} locates each claimed equivalence.
@@ -59,9 +59,9 @@ On one wire, a basis-amplitude function and a pure qubit carry the same informat
 \section{Complete concrete grammar}
 \label{sec:grammar}
 The paper prints QAF's prefix surface. Its complete TatSu reader appears first. A parenthesized form and the same form written with indented operands have identical structure. The layout pass groups a line with its indented children and closes it at the next sibling or dedent. The first line selects the surface. Fixed-arity scalar functions can consume operands inline. The reference manual in the source describes the special forms and their expansion into the typed interpreter.
-\inputminted[fontsize=\footnotesize]{qafgrammar}{../../src/qaf/prefix.ebnf}
+\inputminted[fontsize=\footnotesize]{qafgrammar}{prefix.ebnf}
 The following TatSu grammar defines the shared expression and statement forms after lowering. A production labels fields consumed by semantic actions. Parentheses group, braces repeat and a dollar sign matches end of input. In conventional QAF source, indentation can also replace explicit braces. A colon at the end of a block header and terminal semicolons are optional. The source bridge retains original spelling, comments and layout.
-\inputminted[fontsize=\footnotesize]{qafgrammar}{../../src/qaf/qaf.ebnf}
+\inputminted[fontsize=\footnotesize]{qafgrammar}{qaf.ebnf}
 \section{Reproducing the artifact}
 The companion distribution contains the grammar, CLI, Python interpreter, CUDA kernels, provider adapters, Lean files, worked programs, numerical checks, bibliography and manuscript source. The README gives the tested versions and build commands. Generated examples and figures can be recreated locally. The saved hosted-job receipt records its target, status, shots, outcome counts and gate certificate. Rebuilding the paper requires the supplied \texttt{qaf} and \texttt{qafgrammar} Pygments lexers when refreshing the minted cache. Listings include the real source files used by the examples and proof checker. The \texttt{quantumarticle} class is used for typesetting.
 \input{references}

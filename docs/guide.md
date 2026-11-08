@@ -4,7 +4,7 @@ QAF lets a program call a qubit. Prepare a control in a superposition, use it to
 
 **Brian Mingus · Cognatory, LLC · November 8, 2026**
 
-[Read the paper](../paper.pdf) · [See the QAF factoring source](../examples/prefix/factoring.qaf) · [Inspect the CUDA and Lean build](builds/shor143) · [Browse the proofs](../src/qaf/lean)
+[Read the signed portfolio edition](../paper.pdf) · [Read the 26-page manuscript](paper/manuscript.pdf) · [See the QAF factoring source](../examples/prefix/factoring.qaf) · [Inspect the CUDA and Lean build](builds/shor143) · [Browse the proofs](../src/qaf/lean)
 
 ## Start here
 
@@ -129,8 +129,7 @@ The paper uses TeX Live 2025, minted 3.7.0, latexminted 0.6.0 and Pygments 2.21.
 cd docs/paper
 python -m pip install latexminted==0.6.0 Pygments==2.21.0 ./highlighting
 python make_figure.py
-pdflatex -shell-escape -halt-on-error paper.tex
-pdflatex -shell-escape -halt-on-error paper.tex
+python build.py --refresh
 ~~~
 
-The archive includes the populated minted cache and editable linked bibliography. The three supplied reviews are identified in the opening section. The Quantum article class is distributed under the LaTeX Project Public License identified in its header.
+For a build using the supplied highlighting cache, run `python docs/paper/build.py` from the repository root. The archive includes the populated minted cache and editable linked bibliography. The three supplied reviews are identified in the opening section. The Quantum article class is distributed under the LaTeX Project Public License identified in its header.
