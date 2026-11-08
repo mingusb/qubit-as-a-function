@@ -5,8 +5,8 @@ import json
 import os
 from pathlib import Path
 
-from qaf import Syntax,parser,run
-from qaf_language import prepare
+from .interpreter import Syntax,parser,run
+from .qaf_language import prepare
 
 
 def cuda_available():
@@ -33,11 +33,11 @@ def main():
     if getattr(ast,"model",None) == "network":
         if args.shots or args.export or args.emit_register is not None:
             cli.error("neural declarations export through qaf_torch.py")
-        from qaf_torch import emit_python
+        from .qaf_torch import emit_python
         print(emit_python(ast),end="")
         return
     if getattr(ast,"model",None) == "hilbert":
-        import hilbert
+        from . import hilbert
         if args.shots or args.export or args.backend not in ("auto","cuda","cpu"):
             cli.error("use a finite register for physical sampling of a Hilbert series")
         if args.emit_register is not None:
@@ -54,7 +54,7 @@ def main():
             backend=chosen
         else: backend="cuda" if cuda_available() else "cpu"
     if args.export:
-        from qaf_cloud import ionq_payload,lower,qasm3,quil,certify_quil
+        from .qaf_cloud import ionq_payload,lower,qasm3,quil,certify_quil
         p=lower(source)
         if args.export=="quil":
             text=quil(p); certify_quil(p,text); print(text,end="")
@@ -62,7 +62,7 @@ def main():
         else: print(json.dumps(ionq_payload(p),indent=2))
         return
     if energy:
-        from qaf_energy import exhaustive,ocean
+        from .qaf_energy import exhaustive,ocean
         if backend=="cuda":
             import cupy
             result=exhaustive(ast,cupy)
@@ -75,14 +75,14 @@ def main():
         elif backend=="dwave" and args.shots: result=ocean(ast,reads=args.shots)
         else: cli.error("energy model needs CUDA, CPU, Ocean, or D-Wave with --shots")
     elif backend=="cuda":
-        from qaf_gpu import evaluate
+        from .qaf_gpu import evaluate
         result=evaluate(source)[1]
     elif backend=="cpu": result=run(source)[1]
     elif backend=="torch":
         import torch
-        from qaf_torch import circuit_wave
-        from qaf_language import response
-        from qaf import pair
+        from .qaf_torch import circuit_wave
+        from .qaf_language import response
+        from .interpreter import pair
         with torch.no_grad(): state=circuit_wave(source)
         probabilities=state.abs().square()
         result=[]
@@ -102,7 +102,7 @@ def main():
         if backend in ("dwave","ocean-local"): cli.error("the annealing target requires an energy function")
         if not args.shots: cli.error("provider sampling requires --shots")
         if backend in ("azure","braket","google") and not args.target: cli.error("supply the provider target")
-        from qaf_cloud import lower,sample
+        from .qaf_cloud import lower,sample
         result=sample(lower(source),backend,args.target,args.shots)
     print(json.dumps({"backend":backend,"result":result},indent=2,allow_nan=False))
 

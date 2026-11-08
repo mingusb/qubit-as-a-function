@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qubit-as-a-function"
+version = "0.1.0"
+description = "GPU-first quantum programming with callable qubit wires"
+readme = "docs/guide.md"
+requires-python = ">=3.12"
+authors = [{name = "Brian Mingus", email = "brian@cognatory.com"}]
+dependencies = ["TatSu==5.13.2", "numpy==2.3.5"]
+
+[project.optional-dependencies]
+cuda = ["cupy-cuda13x[ctk]==14.2.0"]
+analysis = ["matplotlib==3.11.2", "sympy==1.14.0", "quaspy==0.9.4"]
+providers = ["amazon-braket-sdk==1.127.7", "azure-quantum==3.13.0", "azure-identity>=1.17,<2", "cirq-google==1.7.0", "dimod==0.12.23", "dwave-system==1.37.0"]
+
+[project.scripts]
+qaf = "qaf.run_qaf:main"
+
+[project.urls]
+Repository = "https://github.com/mingusb/qubit-as-a-function"
+Guide = "https://github.com/mingusb/qubit-as-a-function/blob/main/docs/guide.md"
+
+[tool.setuptools]
+packages = ["qaf", "qaf_examples"]
+py-modules = ["qaf_core"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+qaf_examples = "examples"
+
+[tool.setuptools.package-data]
+qaf = ["*.cu", "*.ebnf", "lean/*.lean", "lean/lean-toolchain"]
+qaf_examples = ["*.qaf", "prefix/*.qaf"]

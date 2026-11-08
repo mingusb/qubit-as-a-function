@@ -8,9 +8,9 @@ from pathlib import Path
 import cupy as cp
 import numpy as np
 
-from qaf import (ANGLES, ARITH, COMBINATORS, CONSTANTS, FUNCTIONS, Syntax, instructions,
+from .interpreter import (ANGLES, ARITH, COMBINATORS, CONSTANTS, FUNCTIONS, Syntax, instructions,
                  local_names, needs_density, pair, parser)
-from qaf_core import BUILTINS, TOL
+from .qaf_core import BUILTINS, TOL
 
 captured_sources = ContextVar("qaf_captured_sources", default=None)
 replay_module = ContextVar("qaf_replay_module", default=None)
@@ -49,7 +49,7 @@ __device__ C mod_value(C a, C b) {
 
 
 def emit(node, names):
-    from qaf_language import current
+    from .qaf_language import current
     lib=current.get()
     kind, *args = node
     if kind == "literal":
@@ -139,7 +139,7 @@ def library_code(lib):
 
 
 def grid_function(expr, variables, rows, cols):
-    from qaf_language import current
+    from .qaf_language import current
     names = dict(zip(variables, ("C((double)y,0)", "C((double)x,0)")))
     code = "int fuel=4096, depth=0; value = " + emit(expr,names) + "; if(fuel<0) value=C(nan(\"\"),0);"
     preamble=PRELUDE+"\n"+library_code(current.get())
@@ -304,7 +304,7 @@ def update(steps, state, width, bits, mixed):
 
 
 def evaluate(source, record_plan=None):
-    from qaf_language import prepare, response
+    from .qaf_language import prepare, response
     ast = prepare(source)
     width,bits = ast.width,ast.bits or 0
     if width < 1:

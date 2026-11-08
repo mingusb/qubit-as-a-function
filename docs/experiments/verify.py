@@ -4,15 +4,15 @@ import importlib.metadata as meta
 import json
 from pathlib import Path
 import numpy as np
-import atlas
-import hilbert
-from qaf import run
-from qaf_core import I, X, Y, Z, H, Wave, BUILTINS, density
-from qaf_language import prepare
-from qaf_cert import lower, quil, certify_quil, ccx
+from qaf.interpreter import atlas
+from qaf.interpreter import hilbert
+from qaf.interpreter import run
+from qaf.qaf_core import I, X, Y, Z, H, Wave, BUILTINS, density
+from qaf.qaf_language import prepare
+from qaf.qaf_cert import lower, quil, certify_quil, ccx
 
 
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(__file__).resolve().parents[2]
 checks={}
 
 
@@ -80,7 +80,7 @@ def main():
     opt=cli.parse_args()
     if opt.gpu:
         import cupy as cp
-        from qaf_gpu import evaluate
+        from qaf.qaf_gpu import evaluate
         checks["device"]=cp.cuda.runtime.getDeviceProperties(0)["name"].decode()
     def both(source):
         branches,answers=run(source)
@@ -191,8 +191,8 @@ def main():
                    target.replace("H 0","X 0")]:
         rejects(lambda:certify_quil(portable,tamper))
     if opt.providers:
-        from qaf_cloud import sample, ionq_payload, google_circuit
-        from qaf_energy import exhaustive,ocean
+        from qaf.qaf_cloud import sample, ionq_payload, google_circuit
+        from qaf.qaf_energy import exhaustive,ocean
         from dimod import ExactSolver
         for name in ("braket-local","cirq-local"):
             ans=sample(portable,name,"",100)["queries"][0]

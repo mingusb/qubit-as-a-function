@@ -5,8 +5,8 @@ from types import SimpleNamespace as NS
 import operator
 import math
 
-from qaf import ARITH, CONSTANTS, FUNCTIONS, Syntax, integer, parser
-from qaf_core import check_wires
+from .interpreter import ARITH, CONSTANTS, FUNCTIONS, Syntax, integer, parser
+from .qaf_core import check_wires
 
 current=ContextVar("qaf_classical_definitions",default=None)
 REL={"==":operator.eq,"!=":operator.ne,"<":operator.lt,"<=":operator.le,
@@ -153,8 +153,8 @@ def modular_step(s,ev):
 
 
 def prepare(source):
-    from qaf_layout import expand_layout
-    from qaf_prefix import is_prefix,lower
+    from .qaf_layout import expand_layout
+    from .qaf_prefix import is_prefix,lower
     expanded=lower(source) if is_prefix(source) else expand_layout(source)[0]
     ast=parser().parse(expanded,semantics=Syntax())
     lib=Library(ast.library)

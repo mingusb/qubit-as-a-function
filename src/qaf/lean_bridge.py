@@ -9,7 +9,7 @@ import subprocess
 import tempfile
 
 from tatsu.grammars import ModelContext
-from qaf import parser
+from .interpreter import parser
 
 
 @dataclass
@@ -30,8 +30,8 @@ class Concrete(ModelContext):
 
 
 def concrete(source):
-    from qaf_layout import expand_layout
-    from qaf_prefix import is_prefix,layout,grammar as prefix_grammar
+    from .qaf_layout import expand_layout
+    from .qaf_prefix import is_prefix,layout,grammar as prefix_grammar
     if is_prefix(source):
         expanded,offsets=layout(source)
         grammar=prefix_grammar()

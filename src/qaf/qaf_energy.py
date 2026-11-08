@@ -1,7 +1,7 @@
 """An energy-function workload with CUDA, CPU and D-Wave Ocean translations."""
 from collections import defaultdict
 
-from qaf import angle
+from .interpreter import angle
 
 
 def coefficients(ast):

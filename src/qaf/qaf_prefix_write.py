@@ -1,7 +1,7 @@
 """Print QAF as indentation-delimited prefix forms suitable for publication."""
-from qaf import Syntax,parser
-from qaf_layout import expand_layout
-from qaf_prefix import forms,is_prefix,lower
+from .interpreter import Syntax,parser
+from .qaf_layout import expand_layout
+from .qaf_prefix import forms,is_prefix,lower
 
 
 def expression(node):

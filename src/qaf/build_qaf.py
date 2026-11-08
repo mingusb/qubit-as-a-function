@@ -33,7 +33,7 @@ def save_plan(folder, width, bits, mixed, steps, wave):
 
 def replay(folder):
     import cupy as cp
-    from qaf_gpu import DeviceOp,replay_module,update
+    from .qaf_gpu import DeviceOp,replay_module,update
     plan=json.loads((folder/"plan.json").read_text())
     with np.load(folder/"tables.npz",allow_pickle=False) as file:
         arrays={name:cp.asarray(file[name]) for name in file}
@@ -57,8 +57,8 @@ def replay(folder):
 
 def build(source,dest):
     import cupy as cp
-    from qaf_gpu import captured_sources,evaluate
-    from lean_bridge import convert
+    from .qaf_gpu import captured_sources,evaluate
+    from .lean_bridge import convert
     if dest.exists(): raise FileExistsError(f"choose a new build directory: {dest}")
     dest.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(dir=dest.parent) as staging:

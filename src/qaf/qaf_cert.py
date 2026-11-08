@@ -3,8 +3,8 @@ from dataclasses import dataclass
 import hashlib
 import json
 
-from qaf import Syntax, parser
-from qaf_core import check_wires
+from .interpreter import Syntax, parser
+from .qaf_core import check_wires
 
 
 @dataclass
@@ -25,7 +25,7 @@ def ccx(a,b,c):
 
 
 def lower(source):
-    from qaf_language import prepare
+    from .qaf_language import prepare
     ast = prepare(source)
     if getattr(ast,"model",None) or ast.width<1:
         raise ValueError("gate certification requires a positive-width circuit")

@@ -68,8 +68,8 @@ def local_gate(wave, gate, wires, width):
 
 
 def circuit_wave(source,device=None,input_qubit=None):
-    from qaf import definitions,instructions,needs_density,scalar
-    from qaf_language import prepare
+    from .interpreter import definitions,instructions,needs_density,scalar
+    from .qaf_language import prepare
     device=device or ("cuda" if torch.cuda.is_available() else "cpu")
     ast=prepare(source); n=ast.width
     steps=instructions(ast.steps,definitions(ast.definitions),n,ast.bits or 0)
@@ -111,7 +111,7 @@ def circuit_wave(source,device=None,input_qubit=None):
 
 
 if __name__=="__main__":
-    from qaf_language import prepare
+    from .qaf_language import prepare
     cli=argparse.ArgumentParser(description=__doc__)
     cli.add_argument("source",type=Path); cli.add_argument("--emit",type=Path)
     args=cli.parse_args()

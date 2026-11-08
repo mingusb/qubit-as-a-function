@@ -1,7 +1,7 @@
 """Independent small-matrix constructions used in the historical and mathematical examples."""
 import math
 import numpy as np
-from qaf_core import I,X,Y,Z
+from .qaf_core import I,X,Y,Z
 
 PAULI=np.stack([X,Y,Z])
 TETRA=np.array([[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]])/np.sqrt(3)
@@ -69,7 +69,7 @@ def cubic_svt(a):
 
 
 def two_step(intervention):
-    from qaf_core import BUILTINS
+    from .qaf_core import BUILTINS
     cnot=BUILTINS["CX"].unitary()
     plus=np.array([1,1])/np.sqrt(2)
     joint=np.kron(np.outer(plus,plus),np.diag([1,0]))
@@ -109,5 +109,5 @@ def order_finding():
     lines.append("state(b) = eq(b,1);")
     for k in range(3):
         lines.extend([f"apply H on {k};",f"apply ctrl(M{k}) on {k},3,4,5,6;"])
-    from qaf_style import format_source
+    from .qaf_style import format_source
     return format_source("\n".join([*lines,qft_steps(3,True),"show probs;"])+"\n")

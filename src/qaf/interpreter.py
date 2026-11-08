@@ -12,7 +12,7 @@ import numpy as np
 import tatsu
 from tatsu.exceptions import FailedParse
 
-from qaf_core import (BUILTINS, Branch, Operation, P0, P1, Wave, X, Y, Z, select,
+from .qaf_core import (BUILTINS, Branch, Operation, P0, P1, Wave, X, Y, Z, select,
                       check_wires, close, controlled, density, euler, evolve,
                       gate, ordered, rotation, sequence, tensor)
 
@@ -89,7 +89,7 @@ CONSTANTS = {"pi": math.pi, "i": 1j}
 
 
 def scalar(node, names=()):
-    from qaf_language import current
+    from .qaf_language import current
     if current.get() is not None:
         lib=current.get()
         return lambda env:lib.value(node,env)
@@ -289,7 +289,7 @@ def observe(query, branches, width):
 
 
 def run(source):
-    from qaf_language import prepare, response
+    from .qaf_language import prepare, response
     syntax = prepare(source)
     width, bits = syntax.width, syntax.bits or 0
     if width < 1:

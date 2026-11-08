@@ -5,7 +5,7 @@ matplotlib.use("Agg")
 matplotlib.rcParams["pdf.fonttype"] = 42
 import matplotlib.pyplot as plt
 import numpy as np
-from qaf_core import I, X, Y
+from qaf.qaf_core import I, X, Y
 
 
 def main():

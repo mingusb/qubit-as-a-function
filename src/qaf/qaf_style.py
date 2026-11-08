@@ -2,8 +2,8 @@
 import argparse
 import re
 from pathlib import Path
-from qaf import Syntax, parser
-from qaf_layout import expand_layout
+from .interpreter import Syntax, parser
+from .qaf_layout import expand_layout
 
 
 TOKENS=re.compile(r'#[^\r\n]*|"[01]+"|[A-Za-z_]\w*|(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?'

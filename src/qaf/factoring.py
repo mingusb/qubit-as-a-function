@@ -6,7 +6,7 @@ from math import gcd, isqrt
 from pathlib import Path
 import numpy as np
 
-ROOT=Path(__file__).resolve().parent
+from importlib.resources import files
 
 
 def parameters(n, base, method):
@@ -21,7 +21,7 @@ def parameters(n, base, method):
 
 def circuit(n,base,method):
     bits,m,l=parameters(n,base,method)
-    head=(ROOT/"examples/prefix/factoring.qaf").read_text(encoding="utf8").split("\nqubits ")[0]
+    head=files("qaf_examples").joinpath("prefix", "factoring.qaf").read_text(encoding="utf8").split("\nqubits ")[0]
     if method=="shor": width=bits+2*m; call=f"order_finding {n} {base} {bits} {2*m}"
     else: width=bits+m+2*l; call=f"short_log {n} {base} {bits} {m} {l}"
     return f"{head}\nqubits {width}\napply X {width-1}\ndo {call}\nshow probs\n"
@@ -75,12 +75,12 @@ def decode(n,g,method,j,k):
 
 
 def experiment(n,g,method,shots,seed,backend,verify=False):
-    from qaf import run
+    from .interpreter import run
     if shots<1: raise ValueError("shots must be positive")
     bits,m,l=parameters(n,g,method)
     source=circuit(n,g,method)
     if backend=="cuda":
-        from qaf_gpu import evaluate
+        from .qaf_gpu import evaluate
         wave,_=evaluate(source)
         import cupy as cp
         marginal=(cp.abs(wave.reshape(-1,2**l,2**bits))**2).sum(axis=2).get()

@@ -5,14 +5,14 @@ import os
 from pathlib import Path
 import tempfile
 import numpy as np
-from lean_bridge import concrete,convert,spell
-from qaf import run
-from qaf_language import prepare
-from qaf_prefix import lower,forms
-from qaf_cert import lower as portable,quil
+from qaf.lean_bridge import concrete,convert,spell
+from qaf.interpreter import run
+from qaf.qaf_language import prepare
+from qaf.qaf_prefix import lower,forms
+from qaf.qaf_cert import lower as portable,quil
 
 
-root=Path(__file__).resolve().parent
+root=Path(__file__).resolve().parents[2]
 standard="""def sign(b) { return 1 - 2 * b; }
 qubits 1;
 state(b) = sign(b) / sqrt(2);
@@ -51,11 +51,11 @@ def main():
     try: prepare("def f(x)\n    let a=x\n   return a\nqubits 1")
     except ValueError: pass
     else: raise AssertionError("bad sibling indentation accepted")
-    expected=(root/"evidence/azure-bell.json").read_text()
-    live=(root/"evidence/azure-bell-submitted.qaf").read_bytes()
+    expected=(root/"docs/evidence/azure-bell.json").read_text()
+    live=(root/"docs/evidence/azure-bell-submitted.qaf").read_bytes()
     assert hashlib.sha256(live).hexdigest()==json.loads(expected)["certificate"]["source_sha256"]
     assert quil(portable(live.decode()))==quil(portable(qread("bell_state")))
-    from factoring import circuit
+    from qaf.factoring import circuit
     assert qread("factoring")==circuit(143,2,"shortlog")
     executed=[]
     for name in ("callable","recursion","algebra","functions","grover","bell_state","bell","teleport","order15"):
@@ -63,7 +63,7 @@ def main():
         obs=run(qread(name))[1]
         assert ref==obs
         executed.append(name)
-    import hilbert
+    from qaf.interpreter import hilbert
     for name in ("hilbert","wave_packet","nonlinear"):
         ref=prepare((root/"examples"/(name+".qaf")).read_text(encoding="utf8"))
         assert hilbert.evaluate(ref)==hilbert.evaluate(prepare(qread(name)))
@@ -77,7 +77,7 @@ def main():
             assert restored.read_bytes()==source.read_bytes()
     record={"five_spellings_times_two_line_endings":len(outputs),"prefix_reference_examples":executed,
             "checked_Lean_byte_roundtrips":3,"historical_Quil_unchanged":True}
-    (root/"evidence/surface.json").write_text(json.dumps(record,indent=2)+"\n")
+    (root/"docs/evidence/surface.json").write_text(json.dumps(record,indent=2)+"\n")
     print(json.dumps(record,indent=2))
 
 

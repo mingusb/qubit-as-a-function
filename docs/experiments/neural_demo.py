@@ -4,11 +4,11 @@ import json
 import math
 import numpy as np
 import torch
-from qaf_language import prepare
-from qaf_torch import BasisAmplitudes,circuit_wave,compile_network,emit_python,normalize
+from qaf.qaf_language import prepare
+from qaf.qaf_torch import BasisAmplitudes,circuit_wave,compile_network,emit_python,normalize
 
 
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(__file__).resolve().parents[2]
 device="cuda" if torch.cuda.is_available() else "cpu"
 torch.manual_seed(20261108)
 torch.set_default_dtype(torch.float64)
@@ -36,7 +36,7 @@ initial=float(energy().detach())
 optimizer.step(closure)
 final=float(energy().detach()); reference=2*(n+1)**2*math.sin(math.pi/(2*(n+1)))**2
 if not reference-1e-10<=final<min(initial,reference+.002): raise AssertionError("variational energy")
-from qaf_gpu import evaluate
+from qaf.qaf_gpu import evaluate
 path=ROOT/"examples/prefix/factoring.qaf"
 source=path.read_text(encoding="utf8")
 network_qubit=BasisAmplitudes([2,0],device)
@@ -49,5 +49,5 @@ result={"pytorch":torch.__version__,"device":torch.cuda.get_device_name(0) if de
         "grid_points":n,"initial_energy":initial,"variational_energy":final,
         "exact_grid_energy":reference,"continuum_energy":math.pi**2/2,
         "shor_amplitudes_compared":wave.numel(),"max_amplitude_difference":diff}
-(ROOT/"evidence/neural.json").write_text(json.dumps(result,indent=2)+"\n")
+(ROOT/"docs/evidence/neural.json").write_text(json.dumps(result,indent=2)+"\n")
 print(json.dumps(result,indent=2))

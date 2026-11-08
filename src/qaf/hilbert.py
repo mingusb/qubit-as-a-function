@@ -146,7 +146,7 @@ def register_source(ast, rank):
     # Decode both integer coordinates explicitly from the MSB-first bit word.
     row = "+".join(f"{2**j}*bit(b,{j+width})" for j in range(width))
     col = "+".join(f"{2**j}*bit(b,{j})" for j in range(width))
-    from qaf_style import format_source
+    from .qaf_style import format_source
     return format_source(f"def power(x,n) {{ let v=1; while (n>0) {{ set v=v*x; set n=n-1; }} return v; }}\n"
             f"def packet(b) {{ let row={row}; let col={col}; "
             f"return (row<{rank})*(col<{rank})*({series})/sqrt({mass}); }}\n"

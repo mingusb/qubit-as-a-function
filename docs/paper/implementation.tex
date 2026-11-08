@@ -8,10 +8,10 @@ Since $V^\dagger V=I$, this is a valid transformation on a superposed, mixed or 
 
 The working grammar is reproduced in Appendix~\ref{sec:grammar}. TatSu compiles the grammar to a parsing-expression-grammar parser \cite{tatsu}. The language follows the design guidance of the Zen of Python \cite{zen} through visible distinctions between state preparation, physical application, measurement, classical circuit construction and simulation-only inspection. Numerical expressions, class methods, recursion, mutable local bindings and finite loops describe amplitudes, gate entries or circuits. A \texttt{def} is a classical routine and a \texttt{proc} builds an instruction sequence. The runtime quantum-function type is the wire type. Extending the identification to every classical routine, including a routine that returns an arbitrary integer or fails to terminate, would change the meaning of either programming functions or qubits.
 
-\inputminted[fontsize=\footnotesize]{qaf}{examples/prefix/recursion.qaf}
+\inputminted[fontsize=\footnotesize]{qaf}{../../examples/prefix/recursion.qaf}
 The recursive \texttt{sign} method runs for each requested basis label in the initial-state kernel. The \texttt{fan} procedure expands at compile time, yielding a Hadamard and two CNOTs in total with the explicit Hadamard in the main program. The final distribution is supported on $000$ and $111$ with probability $1/2$ each. A depth and step guard admit bounded executions and report exhaustion. In particular, a divergent recursive function is a meaningful program whose evaluation fails; it cannot denote an additional physical qubit. The grammar also supports unitary kernels, Kraus families, sequential and tensor composition, unitary adjoints, coherent selection, and before/after wrappers for slots.
 
-\inputminted{qaf}{examples/prefix/functions.qaf}
+\inputminted{qaf}{../../examples/prefix/functions.qaf}
 The three definitions above implement three distinct constructions. The diagonal gate applies the spectral function $\exp(-i\pi Z/3)$. The two Kraus operators dephase in the $Z$ basis. The wrapper conjugates the channel with Hadamards, producing dephasing in the $X$ basis. The initial $\ket+$ is fixed by that channel, and the final Hadamard gives computational zero with probability $\cos^2(\pi/3)=1/4$. This program exercises a scalar function of an operator, a channel acting on a state and a higher-order transformation acting on a channel.
 
 \subsection{Native execution and its reference semantics}
@@ -27,7 +27,7 @@ For $n$ quantum wires, $m$ classical bits and local width $k$, pure-state storag
 
 \subsection{A lossless Lean embedding}
 The translator obtains a concrete TatSu derivation with labeled productions, terminals and source trivia. A Lean \texttt{Source} tree represents that derivation. A separate inductive \texttt{Term} gives a programmable embedding that users can build with Lean definitions before evaluation. The maps exchange the respective token, end, argument and rule constructors. The central proofs are short enough to reproduce directly from the checked file \cite{lean}.
-\inputminted[firstline=34,lastline=38,fontsize=\footnotesize]{lean4}{lean/QAF.lean}
+\inputminted[firstline=34,lastline=38,fontsize=\footnotesize]{lean4}{../../src/qaf/lean/QAF.lean}
 Structural induction proves both inverse identities on all values of the respective inductives. A spelling witness lifts the first identity to original UTF-8 source text. Preservation of any meaning assigned to the source tree follows by substitution along equality. The command-line importer evaluates the closed Lean program, decodes it and reparses its spelling to enforce membership in the canonical image of the grammar. The exporter reads back the generated Lean program and compares its tree. Edits, comments, blank lines and line endings thus have a defined round-trip path for accepted inputs. The theorem covers the embedded \texttt{Term} language. Arbitrary Lean libraries with effects or unrelated types have no implied QAF translation. The handwritten interpreter, host parser and CUDA code generator remain outside the kernel-checked proof.
 
 \subsection{Portable execution and backend validation}
@@ -55,7 +55,7 @@ D-Wave Ocean & Binary quadratic models & Local exact sampler and coefficient com
 
 \subsection{Experiments and independently checkable predictions}
 The following Python program checks populations, local mixing and joint coherence using the reference evaluator. The last assertion distinguishes a pure Bell state from a classical source that emits $00$ or $11$ with equal probability.
-\inputminted[fontsize=\footnotesize]{python}{examples/check_callable.py}
+\inputminted[fontsize=\footnotesize]{python}{../../examples/check_callable.py}
 For a stronger Bell test, reverse the entangler on the output or measure a joint $X\otimes X$ observable. A Bell state gives expectation one while the equally weighted incoherent mixture of $00$ and $11$ gives zero. The hosted 100-shot Bell run measured in the computational basis, so it checked readout correspondence and the expected support without measuring entanglement. No physical QPU benchmark or speedup estimate follows from these counts.
 
 Other deterministic checks exercise teleportation of a state with a complex relative phase in all four outcome branches, Grover search, order finding, the Toffoli decomposition on all eight input columns including phases, and seeded arbitrary-input gates on permuted wires. Reconstruction tests compare Bloch, SIC, Wigner and Choi forms. A process example checks memory under two interventions. The singular-value example compares the dilated circuit block with its closed polynomial. For the Dirichlet box $(0,1)$ in units $\hbar=m=1$, $N=2^n$ interior points give ground energy $2(N+1)^2\sin^2(\pi/[2(N+1)])$. It converges from below to $\pi^2/2$. The associated infinite series example checks exact overlaps against normalized finite QAF preparations. All tests and numerical outputs are supplied with the paper.
